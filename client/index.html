@@ -1,0 +1,116 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title>Winery Guild</title>
+        <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+        <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="style.css"> -->
+    </head>
+
+    <body>
+
+        <div id ='app'>
+            <v-app>
+                <v-container>
+                    <h1>Add Winery</h1>
+                    <v-form @submit ='submit'>
+                        <v-text-field 
+                            label="Winery Name"
+                            v-model = 'wineryname'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Winery Owner"
+                            v-model = 'wineryowner'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Permit Number"
+                            v-model = 'permitnumber'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Street"
+                            v-model = 'street'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="City"
+                            v-model = 'city'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="State"
+                            v-model = 'state'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Zipcode"
+                            v-model = 'zipcode'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="County"
+                            v-model = 'county'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Latitude"
+                            v-model = 'lat'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Longitude"
+                            v-model = 'lng'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Status"
+                            v-model = 'status'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Video Url"
+                            v-model = 'videourl'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Website Url"
+                            v-model = 'websiteurl'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Phone Number"
+                            v-model = 'phone'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Email"
+                            v-model = 'email'>
+                        </v-text-field>
+                        <v-text-field 
+                            label="Description"
+                            v-model = 'description'>
+                        </v-text-field>
+                        <v-btn type ='submit'>Submit</v-btn>
+                    </v-form>
+                </v-container>
+
+                <v-container fluid grid-list md>
+
+                    
+                    <v-data-iterator 
+                    :items ='wineries'
+                    :rows-per-page-items="[4,8,12]"
+                    content-tag="v-layout">
+                        <v-flex slot ='item' slot-scope ='props' xs12 sm6 md4 lg3>
+                            <v-card>
+                                <v-card-title> {{props.item.wineryName}} </v-card-title>
+                                <v-divider></v-divider>
+                                    <v-list dense>
+                                        <v-list-tile v-for= "(wineryItem, key, index) in props.item">
+                                            <v-list-tile-content>{{ key }}</v-list-tile-content>
+                                            <v-list-tile-content>{{wineryItem}}</v-list-tile-content>
+                                        </v-list-tile>
+                                    </v-list>
+                            </v-card>
+                        </v-flex>
+                    </v-data-iterator>
+                </v-container>
+            </v-app>
+        </div>
+
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
+        <!-- <script src ="data.js"></script> -->
+        <script src ="main.js" type ='module'></script>
+        
+    </body>
+</html>
