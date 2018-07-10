@@ -19,7 +19,10 @@ const app = new Vue({
         phone: '',
         email: '',
         description: '',
-        wineries: []
+        wineries: [],
+        pagination: {
+            rowsPerPage: 4,
+        }
     },
     created () {
         api.getWineries()
