@@ -22,7 +22,9 @@ const app = new Vue({
         wineries: [],
         pagination: {
             rowsPerPage: 4,
-        }
+        },
+        exists: false,
+        search: '',
     },
     created () {
         api.getWineries()
@@ -52,6 +54,13 @@ const app = new Vue({
             //using the api to add a winery to the database
             api.addWinery(winery)
                 .then(winery => this.wineries.unshift(winery)) //adding the winery to the vue instance.
+        },
+        getWinery (name) {
+            api.getWinery(name)
+                .then(winery => {
+                    console.log(winery)
+                })
+                .catch (e => console.log(e))
         }
     }
 })

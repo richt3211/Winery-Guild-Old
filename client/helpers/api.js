@@ -3,6 +3,9 @@ const getWineries = () =>
     .then(res => {
         return res.json()
     })
+const getWinery = (name) => {
+    fetch(`/wineries/${}`)
+}
 const addWinery = winery =>
     //calling an http request on the home directory to add a winery based on the vue instance data on the form.
     fetch('/wineries', {
