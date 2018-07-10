@@ -27,8 +27,12 @@ const app = new Vue({
         search: '',
     },
     created () {
+        console.log("running get wineries function")
         api.getWineries()
-            .then(wineries => this.wineries = wineries)
+            .then(wineries => {
+                this.wineries = wineries
+                console.log('adding wineries to vue instance')
+            })
             .catch( e => console.log(e))
     },
     methods: {
@@ -45,8 +49,8 @@ const app = new Vue({
                 lat: Number(this.lat),
                 lng: Number(this.lng),
                 status: this.status,
-                videoUrl: this.videourl,
-                websiteUrl: this.websiteurl,
+                videourl: this.videourl,
+                websiteurl: this.websiteurl,
                 phone: this.phone,
                 email: this.email,
                 description: this.description,
@@ -56,11 +60,48 @@ const app = new Vue({
                 .then(winery => this.wineries.unshift(winery)) //adding the winery to the vue instance.
         },
         getWinery (name) {
-            api.getWinery(name)
-                .then(winery => {
-                    console.log(winery)
+            console.log("pulling in the winery")
+            const indexOfWinery = this.wineries.findIndex(winery => winery.wineryname === name)
+            console.log(indexOfWinery)
+            const winery = this.wineries[indexOfWinery]
+            this.wineryname = winery.wineryname
+            this.wineryowner = winery.wineryowner
+            this.permitnumber = winery.permitnumber
+            this.street = winery.street
+            this.city = winery.city
+            this.state = winery.state
+            this.zipcode = winery.zipcode
+            this.county = winery.county
+            this.lat = winery.lat
+            this.lng = winery.lng
+            this.videourl = winery.url
+
+            this.exists = true
+        },
+        updateWinery () {
+            const winery = {
+                wineryname: this.wineryname,
+                wineryowner: this.wineryowner,
+                permitnumber: this.permitnumber,
+                street: this.street,
+                city: this.city,
+                state: this.state,
+                zipcode: Number(this.zipcode),
+                county: this.county,
+                lat: Number(this.lat),
+                lng: Number(this.lng),
+                status: this.status,
+                videourl: this.videourl,
+                websiteurl: this.websiteurl,
+                phone: this.phone,
+                email: this.email,
+                description: this.description
+            }
+            api.updateWinery(winery)
+                .then(updatedWinery => {
+                    const indexOfWinery = wineries.findIndex(winery => winery._id === updatedWinery._id )
+                    wineries.splice(indexOfWinery,1, updatedWinery)
                 })
-                .catch (e => console.log(e))
         }
     }
 })

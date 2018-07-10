@@ -39,5 +39,26 @@ module.exports = {
             next()
         })
 
+    },
+    editWinery: (req,res,next) => {
+        Winery.findById(req.params.id)
+            .then(winery => {
+                if (winery === null) {
+                    res.status(404).send()
+                    return
+                }
+                winery.status = req.body.status
+                winery.videourl = req.body.videourl
+                winery.websiteurl = req.body.websiteurl
+                winery.description = req.body.description
+                winery.phone = req.body.phone
+                winery.email = req.body.email
+                return expense.save()
+            })
+            .then(winery => res.json(winery))
+            .catch(e => {
+                req.error = e
+                next()
+            })
     }
 }

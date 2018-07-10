@@ -3,9 +3,6 @@ const getWineries = () =>
     .then(res => {
         return res.json()
     })
-const getWinery = (name) => {
-    fetch(`/wineries/${}`)
-}
 const addWinery = winery =>
     //calling an http request on the home directory to add a winery based on the vue instance data on the form.
     fetch('/wineries', {
@@ -16,8 +13,22 @@ const addWinery = winery =>
         body: JSON.stringify(winery)
     })
     .then(res => res.json())
-
+const updateWinery = winery => {
+    fetch(`/wineries/${winery._id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(winery)
+    })
+    .then(res => {
+        console.log(res.json())
+        return res.json()
+    })
+    .catch(e => console.log(e))
+}
 export default {
     getWineries,
-    addWinery
+    addWinery,
+    updateWinery
 }
