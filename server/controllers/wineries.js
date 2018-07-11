@@ -41,24 +41,48 @@ module.exports = {
 
     },
     editWinery: (req,res,next) => {
-        Winery.findById(req.params.id)
-            .then(winery => {
-                if (winery === null) {
-                    res.status(404).send()
-                    return
-                }
-                winery.status = req.body.status
-                winery.videourl = req.body.videourl
-                winery.websiteurl = req.body.websiteurl
-                winery.description = req.body.description
-                winery.phone = req.body.phone
-                winery.email = req.body.email
-                return expense.save()
-            })
+        console.log(req.params.id)
+        Winery.findById(req.params.id, (err, winery) => {
+            if (err) {
+                res.status(404).send()
+                return
+            }
+            console.log(winery)
+            winery.status = req.body.status
+            console.log(req.body.videourl)
+            winery.videourl = req.body.videourl
+            winery.websiteurl = req.body.websiteurl
+            winery.description = req.body.description
+            winery.phone = req.body.phone
+            winery.email = req.body.email
+            return winery.save()
+        })
             .then(winery => res.json(winery))
-            .catch(e => {
+            .catch( e => {
                 req.error = e
                 next()
             })
+
+        // Winery.findById(req.params.id)
+        //     .then(winery => {
+        //         console.log(winery)
+        //         if (winery === null) {
+        //             console.log("winery is null")
+        //             res.status(404).send()
+        //             return
+        //         }
+        //         winery.status = req.body.status
+        //         winery.videourl = req.body.videourl
+        //         winery.websiteurl = req.body.websiteurl
+        //         winery.description = req.body.description
+        //         winery.phone = req.body.phone
+        //         winery.email = req.body.email
+        //         return expense.save()
+        //     })
+        //     .then(winery => res.json(winery))
+        //     .catch(e => {
+        //         req.error = e
+        //         next()
+        //     })
     }
 }

@@ -14,17 +14,15 @@ const addWinery = winery =>
     })
     .then(res => res.json())
 const updateWinery = winery => {
-    fetch(`/wineries/${winery._id}`, {
+    console.log(winery._id)
+    return fetch(`/wineries/${winery._id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(winery)
     })
-    .then(res => {
-        console.log(res.json())
-        return res.json()
-    })
+    .then(res => res.json())
     .catch(e => console.log(e))
 }
 export default {

@@ -20,11 +20,9 @@ const app = new Vue({
         email: '',
         description: '',
         wineries: [],
-        pagination: {
-            rowsPerPage: 4,
-        },
         exists: false,
         search: '',
+        wineryId: '',
     },
     created () {
         console.log("running get wineries function")
@@ -74,7 +72,14 @@ const app = new Vue({
             this.county = winery.county
             this.lat = winery.lat
             this.lng = winery.lng
-            this.videourl = winery.url
+            this.videourl = winery.videourl
+            this.status = winery.status
+            this.websiteurl = winery.websiteurl
+            this.phone = winery.phone
+            this.email = winery.email
+            this.description = winery.description
+            
+            this.wineryId = winery._id
 
             this.exists = true
         },
@@ -95,12 +100,13 @@ const app = new Vue({
                 websiteurl: this.websiteurl,
                 phone: this.phone,
                 email: this.email,
-                description: this.description
+                description: this.description,
+                _id: this.wineryId
             }
             api.updateWinery(winery)
                 .then(updatedWinery => {
-                    const indexOfWinery = wineries.findIndex(winery => winery._id === updatedWinery._id )
-                    wineries.splice(indexOfWinery,1, updatedWinery)
+                    const indexOfWinery = this.wineries.findIndex(winery => winery._id === updatedWinery._id )
+                    this.wineries.splice(indexOfWinery,1, updatedWinery)
                 })
         }
     }
