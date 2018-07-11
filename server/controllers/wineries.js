@@ -50,6 +50,7 @@ module.exports = {
             console.log(winery)
             winery.status = req.body.status
             console.log(req.body.videourl)
+            winery.wineryname = req.body.wineryname
             winery.videourl = req.body.videourl
             winery.websiteurl = req.body.websiteurl
             winery.description = req.body.description
