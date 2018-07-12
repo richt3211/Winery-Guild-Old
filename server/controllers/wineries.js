@@ -40,6 +40,12 @@ module.exports = {
         })
 
     },
+    // addImg: (req, res, next) => {
+    //     var logo = req.body.logo
+    //     var bg = req.body.bgImg
+    //     console.log(logo)
+    //     console.log(bg)
+    // },
     editWinery: (req,res,next) => {
         Winery.findById(req.params.id)
             .then(winery => {
@@ -53,6 +59,8 @@ module.exports = {
                 winery.description = req.body.description
                 winery.phone = req.body.phone
                 winery.email = req.body.email
+                winery.logo = req.body.logo
+                winery.bgImg = req.body.bgImg
                 return expense.save()
             })
             .then(winery => res.json(winery))

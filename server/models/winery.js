@@ -16,6 +16,8 @@ const winerySchema = mongoose.Schema ({
     status: String,
     videourl: String,
     websiteurl: String,
+    logo: { data: Buffer, contentType: String },
+    bgImg: { data: Buffer, contentType: String },
     description: String,
     phone: String,
     email: String,

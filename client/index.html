@@ -12,23 +12,27 @@
 
         <div id ='app'>
             <v-app>
-                <v-text-field placeholder ="Search for Winery" @keyup.enter.prevent ="getWinery(search)" v-model ='search' type='text'></v-text-field>
-                <v-container v-if="exists">
+                <!-- <v-text-field placeholder ="Search for Winery" @keyup.enter.prevent ="getWinery(search)" v-model ='search' type='text'></v-text-field>
+                <v-container v-if="exists"> -->
                     <h1>Add Winery</h1>
-                    <v-form @submit.prevent ='updateWinery'>
-                        <v-text-field label="Winery Name" v-model = 'wineryname'></v-text-field>
-                        <v-text-field label="Winery Owner" v-model = 'wineryowner'></v-text-field>
-                        <v-text-field label="Permit Number" v-model = 'permitnumber'></v-text-field>
-                        <v-text-field label="Street" v-model = 'street'></v-text-field>
-                        <v-text-field label="City" v-model = 'city'></v-text-field>
-                        <v-text-field label="State" v-model = 'state'></v-text-field>
-                        <v-text-field label="Zipcode" v-model = 'zipcode'></v-text-field>
-                        <v-text-field label="County" v-model = 'county'></v-text-field>
-                        <v-text-field label="Latitude" v-model = 'lat'></v-text-field>
-                        <v-text-field label="Longitude" v-model = 'lng'></v-text-field>
-                        <v-text-field label="Status" v-model = 'status'></v-text-field>
-                        <v-text-field label="Video Url" v-model = 'videourl'></v-text-field>
-                        <v-text-field label="Website Url" v-model = 'websiteurl'></v-text-field>
+                    <v-form id="form" @submit.prevent ='updateWinery'>
+                        <v-text-field label="Winery Name" name="wineryName" v-model = 'wineryname'></v-text-field>
+                        <v-text-field label="Winery Owner" name="wineryOwner" v-model = 'wineryowner'></v-text-field>
+                        <v-text-field label="Permit Number" name="permitNumber" v-model = 'permitnumber'></v-text-field>
+                        <v-text-field label="Street" name="street" v-model = 'street'></v-text-field>
+                        <v-text-field label="City" name="city" v-model = 'city'></v-text-field>
+                        <v-text-field label="State" name="state" v-model = 'state'></v-text-field>
+                        <v-text-field label="Zipcode" name="zip" v-model = 'zipcode'></v-text-field>
+                        <v-text-field label="County" name="county" v-model = 'county'></v-text-field>
+                        <v-text-field label="Latitude" name="lat" v-model = 'lat'></v-text-field>
+                        <v-text-field label="Longitude" name="lng" v-model = 'lng'></v-text-field>
+                        <v-text-field label="Status" name="status" v-model = 'status'></v-text-field>
+                        <v-text-field label="Video Url" name="vidUrl" v-model = 'videourl'></v-text-field>
+                        <v-text-field label="Website Url" name="webUrl" v-model = 'websiteurl'></v-text-field>
+    <input type="file" @change="logoData" id="uploader1" name="logo" style="display: none" accept="*.jpg">
+                        <v-btn label="Logo" @click="upload1" id="clicker">Logo</v-btn>
+    <input type="file" @change="bgData" id="uploader2" name="bgImg" style="display: none" accept="*.jpg">
+                        <v-btn label="Background Image" @click="upload2" id="clicker">Background</v-btn>
                         <v-text-field label="Phone Number" v-model = 'phone'></v-text-field>
                         <v-text-field label="Email" v-model = 'email'></v-text-field>
                         <v-text-field label="Description" v-model = 'description'></v-text-field>

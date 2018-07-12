@@ -16,6 +16,8 @@ const app = new Vue({
         status: '',
         videourl: '',
         websiteurl: '',
+        logo: '',
+        bgImg: '',
         phone: '',
         email: '',
         description: '',
@@ -36,6 +38,14 @@ const app = new Vue({
             .catch( e => console.log(e))
     },
     methods: {
+        upload1(){
+            var upld1 = document.querySelector('#uploader1')
+            upld1.click()
+        },
+        upload2(){
+            var upld2 = document.querySelector('#uploader2')
+            upld2.click()
+        },
         submit () {
             const winery = {
                 wineryname: this.wineryname,
@@ -51,6 +61,8 @@ const app = new Vue({
                 status: this.status,
                 videourl: this.videourl,
                 websiteurl: this.websiteurl,
+                logo: this.logo,
+                bgImg: this.bgImg,
                 phone: this.phone,
                 email: this.email,
                 description: this.description,
@@ -58,6 +70,13 @@ const app = new Vue({
             //using the api to add a winery to the database
             api.addWinery(winery)
                 .then(winery => this.wineries.unshift(winery)) //adding the winery to the vue instance.
+        },
+        logoData(e){
+            this.logo = e.target.files[0]
+
+        },
+        bgData(e){
+            this.bgImg = e.target.files[0]
         },
         getWinery (name) {
             console.log("pulling in the winery")
@@ -75,7 +94,8 @@ const app = new Vue({
             this.lat = winery.lat
             this.lng = winery.lng
             this.videourl = winery.url
-
+            this.logo = winery.logo
+            this.bgImg = winery.bgImg
             this.exists = true
         },
         updateWinery () {
@@ -93,12 +113,15 @@ const app = new Vue({
                 status: this.status,
                 videourl: this.videourl,
                 websiteurl: this.websiteurl,
+                logo: this.logo,
+                bgImg: this.bgImg,
                 phone: this.phone,
                 email: this.email,
                 description: this.description
             }
+            console.log(api.updateWinery(winery))
             api.updateWinery(winery)
-                .then(updatedWinery => {
+                .then(updateWinery => {
                     const indexOfWinery = wineries.findIndex(winery => winery._id === updatedWinery._id )
                     wineries.splice(indexOfWinery,1, updatedWinery)
                 })

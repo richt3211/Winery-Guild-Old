@@ -12,7 +12,8 @@ app.use(morgan('tiny')) //watching for changes
 app.use('/wineries', wineryRouter) //using the winery router for the home directory of the server
 
 
-mongoose.connect('mongodb://richt3211:hetfield3211@ds119171.mlab.com:19171/winery-guild') //connecting to mlab database
-	.then(() => {
-		app.listen(3000)
-	})
+// mongoose.connect('mongodb://richt3211:hetfield3211@ds119171.mlab.com:19171/winery-guild') //connecting to mlab database
+	mongoose.connect('mongodb://new123:new123@ds233581.mlab.com:33581/imagetest')
+		.then(() => {
+			app.listen(3000)
+		})

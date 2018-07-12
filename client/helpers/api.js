@@ -10,15 +10,16 @@ const addWinery = winery =>
         headers: {
             'Content-Type': 'application/json'
         },
+
         body: JSON.stringify(winery)
     })
-    .then(res => res.json())
+    .then(res => res.send())
 const updateWinery = winery => {
+    // handleImages(){
+    
+    // }
     fetch(`/wineries/${winery._id}`, {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify(winery)
     })
     .then(res => {
@@ -27,6 +28,7 @@ const updateWinery = winery => {
     })
     .catch(e => console.log(e))
 }
+
 export default {
     getWineries,
     addWinery,
