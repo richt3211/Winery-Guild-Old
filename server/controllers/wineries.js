@@ -1,4 +1,6 @@
 const Winery = require('../models/winery')
+const path = require('path')
+const fs = require('fs')
 
 module.exports = {
     //This is the function the router calls to add a winery to the database
@@ -47,26 +49,42 @@ module.exports = {
     //     console.log(bg)
     // },
     editWinery: (req,res,next) => {
-        Winery.findById(req.params.id)
-            .then(winery => {
-                if (winery === null) {
-                    res.status(404).send()
-                    return
-                }
-                winery.status = req.body.status
-                winery.videourl = req.body.videourl
-                winery.websiteurl = req.body.websiteurl
-                winery.description = req.body.description
-                winery.phone = req.body.phone
-                winery.email = req.body.email
-                winery.logo = req.body.logo
-                winery.bgImg = req.body.bgImg
-                return expense.save()
-            })
+        Winery.findById(req.params.id, (err, winery) => {
+            if (err) {
+                res.status(404).send()
+                return
+            }
+            // const tempPath = req.file.path
+            // const targetPath = path.join(__dirname, './uploads/image.jpg')
+            // if (path.extname(req.file.originalname).toLowerCase() === '.jpg') {
+            //     fs.rename(tempPath, targetPath, err => {
+            //         res.status(200).contentType('text/plain').end('file uploaded')
+            //     })
+            // }
+            // else {
+            //     fs.unlink(tempPath, err => {
+            //         if (err) return handleError(err, res)
+            //         res.status(403).contentType('text/plan').end("Only .jpg files are allowed")
+            //     })
+            // }
+            console.log(req.file)
+            // console.log(req.files.file)
+            // console.log(req.body.bgImg)
+            // console.log(req.body.status)
+            // winery.status = req.body.status
+            // winery.wineryname = req.body.wineryname
+            // winery.videourl = req.body.videourl
+            // winery.websiteurl = req.body.websiteurl
+            // winery.description = req.body.description
+            // winery.phone = req.body.phone
+            // winery.email = req.body.email
+            // return winery.save()
+        })
             .then(winery => res.json(winery))
-            .catch(e => {
+            .catch( e => {
                 req.error = e
                 next()
             })
+
     }
 }

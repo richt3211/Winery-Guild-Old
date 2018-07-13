@@ -9,11 +9,12 @@ const wineryRouter = require('./routes/wineries')
 app.use(bodyParser.json())
 app.use(express.static(`${__dirname}/../client`)) //rendering the static views
 app.use(morgan('tiny')) //watching for changes
+
 app.use('/wineries', wineryRouter) //using the winery router for the home directory of the server
 
 
 // mongoose.connect('mongodb://richt3211:hetfield3211@ds119171.mlab.com:19171/winery-guild') //connecting to mlab database
-	mongoose.connect('mongodb://new123:new123@ds233581.mlab.com:33581/imagetest')
+	mongoose.connect('mongodb://richt3211:hetfield3211@ds119171.mlab.com:19171/winery-guild')
 		.then(() => {
 			app.listen(3000)
 		})

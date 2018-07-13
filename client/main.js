@@ -22,11 +22,9 @@ const app = new Vue({
         email: '',
         description: '',
         wineries: [],
-        pagination: {
-            rowsPerPage: 4,
-        },
         exists: false,
-        search: '',
+        search: 'SIGHTGLASS CELLARS',
+        wineryId: '',
     },
     created () {
         console.log("running get wineries function")
@@ -46,7 +44,7 @@ const app = new Vue({
             var upld2 = document.querySelector('#uploader2')
             upld2.click()
         },
-        submit () {
+        addWinery () {
             const winery = {
                 wineryname: this.wineryname,
                 wineryowner: this.wineryowner,
@@ -73,7 +71,6 @@ const app = new Vue({
         },
         logoData(e){
             this.logo = e.target.files[0]
-
         },
         bgData(e){
             this.bgImg = e.target.files[0]
@@ -93,9 +90,15 @@ const app = new Vue({
             this.county = winery.county
             this.lat = winery.lat
             this.lng = winery.lng
-            this.videourl = winery.url
-            this.logo = winery.logo
-            this.bgImg = winery.bgImg
+            this.videourl = winery.videourl
+            this.status = winery.status
+            this.websiteurl = winery.websiteurl
+            this.phone = winery.phone
+            this.email = winery.email
+            this.description = winery.description
+            
+            this.wineryId = winery._id
+
             this.exists = true
         },
         updateWinery () {
@@ -117,13 +120,14 @@ const app = new Vue({
                 bgImg: this.bgImg,
                 phone: this.phone,
                 email: this.email,
-                description: this.description
+                description: this.description,
+                _id: this.wineryId
             }
-            console.log(api.updateWinery(winery))
+            console.log(winery)
             api.updateWinery(winery)
-                .then(updateWinery => {
-                    const indexOfWinery = wineries.findIndex(winery => winery._id === updatedWinery._id )
-                    wineries.splice(indexOfWinery,1, updatedWinery)
+                .then(updatedWinery => {
+                    const indexOfWinery = this.wineries.findIndex(winery => winery._id === updatedWinery._id )
+                    this.wineries.splice(indexOfWinery,1, updatedWinery)
                 })
         }
     }

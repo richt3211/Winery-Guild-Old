@@ -12,10 +12,10 @@
 
         <div id ='app'>
             <v-app>
-                <!-- <v-text-field placeholder ="Search for Winery" @keyup.enter.prevent ="getWinery(search)" v-model ='search' type='text'></v-text-field>
-                <v-container v-if="exists"> -->
+                <v-text-field placeholder ="Search for Winery" @keyup.enter.prevent ="getWinery(search)" v-model ='search' type='text'></v-text-field>
+                <v-container v-if="exists">
                     <h1>Add Winery</h1>
-                    <v-form id="form" @submit.prevent ='updateWinery'>
+                    <v-form id="form" @submit.prevent ='updateWinery' enctype ='multipart/form-data'>
                         <v-text-field label="Winery Name" name="wineryName" v-model = 'wineryname'></v-text-field>
                         <v-text-field label="Winery Owner" name="wineryOwner" v-model = 'wineryowner'></v-text-field>
                         <v-text-field label="Permit Number" name="permitNumber" v-model = 'permitnumber'></v-text-field>
@@ -37,6 +37,7 @@
                         <v-text-field label="Email" v-model = 'email'></v-text-field>
                         <v-text-field label="Description" v-model = 'description'></v-text-field>
                         <v-btn type ='submit'>Save</v-btn>
+                        <V-btn @click="addWinery">Add</V-btn>
                     </v-form>
                 </v-container>
             </v-app>

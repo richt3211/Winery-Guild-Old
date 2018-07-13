@@ -15,17 +15,17 @@ const addWinery = winery =>
     })
     .then(res => res.send())
 const updateWinery = winery => {
-    // handleImages(){
-    
-    // }
-    fetch(`/wineries/${winery._id}`, {
+    const form = new FormData()
+    form.append('bgImg', winery.bgImg)
+    form.append('logo', winery.logo)
+    console.log(form)
+    console.log(winery.bgImg)
+    console.log(winery.logo)
+    return fetch(`/wineries/${winery._id}`, {
         method: 'PUT',
-        body: JSON.stringify(winery)
+        body: form
     })
-    .then(res => {
-        console.log(res.json())
-        return res.json()
-    })
+    .then(res => res.json())
     .catch(e => console.log(e))
 }
 
