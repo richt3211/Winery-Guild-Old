@@ -36,11 +36,15 @@
                         <v-text-field label="Phone Number" v-model = 'phone'></v-text-field>
                         <v-text-field label="Email" v-model = 'email'></v-text-field>
                         <v-text-field label="Description" v-model = 'description'></v-text-field>
+                        <v-text-field label="Logo link" :value = 'logoLink'></v-text-field>
+                        <v-text-field label ="Background Link" :value = 'backgroundLink'></v-text-field>
                         <v-btn type ='submit'>Save</v-btn>
                         <V-btn @click="addWinery">Add</V-btn>
                     </v-form>
                 </v-container>
-                <img src='/granite-lion-logo.jpg'>
+                <h1> {{wineryId}} </h1>
+                <img :src= 'logoLink'>
+                <img :src= 'backgroundLink'>
             </v-app>
         </div>
 

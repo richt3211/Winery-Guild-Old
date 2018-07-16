@@ -25,6 +25,9 @@ const app = new Vue({
         exists: false,
         search: 'SIGHTGLASS CELLARS',
         wineryId: '',
+        logoLink: '',
+        backgroundLink: '',
+    
     },
     created () {
         console.log("running get wineries function")
@@ -78,7 +81,6 @@ const app = new Vue({
         getWinery (name) {
             console.log("pulling in the winery")
             const indexOfWinery = this.wineries.findIndex(winery => winery.wineryname === name)
-            console.log(indexOfWinery)
             const winery = this.wineries[indexOfWinery]
             this.wineryname = winery.wineryname
             this.wineryowner = winery.wineryowner
@@ -96,12 +98,13 @@ const app = new Vue({
             this.phone = winery.phone
             this.email = winery.email
             this.description = winery.description
-            
             this.wineryId = winery._id
-
             this.exists = true
+            this.logoLink = winery.logo
+            this.backgroundLink = winery.background
         },
         updateWinery () {
+
             const winery = {
                 wineryname: this.wineryname,
                 wineryowner: this.wineryowner,
@@ -116,7 +119,7 @@ const app = new Vue({
                 status: this.status,
                 videourl: this.videourl,
                 websiteurl: this.websiteurl,
-                images: [ this.bgIgm, this.logo],
+                images: [ this.bgImg, this.logo],
                 phone: this.phone,
                 email: this.email,
                 description: this.description,
