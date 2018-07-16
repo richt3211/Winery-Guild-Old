@@ -67,7 +67,7 @@ module.exports = {
             //         res.status(403).contentType('text/plan').end("Only .jpg files are allowed")
             //     })
             // }
-            console.log(req.file)
+            console.log(req.files)
             // console.log(req.files.file)
             // console.log(req.body.bgImg)
             // console.log(req.body.status)

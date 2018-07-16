@@ -16,11 +16,9 @@ const addWinery = winery =>
     .then(res => res.send())
 const updateWinery = winery => {
     const form = new FormData()
-    form.append('bgImg', winery.bgImg)
-    form.append('logo', winery.logo)
+    form.append('images', winery.images)
+    form.append('name', winery.wineryname)
     console.log(form)
-    console.log(winery.bgImg)
-    console.log(winery.logo)
     return fetch(`/wineries/${winery._id}`, {
         method: 'PUT',
         body: form
