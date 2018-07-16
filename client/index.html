@@ -13,7 +13,7 @@
         <div id ='app'>
             <v-app>
                 <v-text-field placeholder ="Search for Winery" @keyup.enter.prevent ="getWinery(search)" v-model ='search' type='text'></v-text-field>
-                <v-container v-if="exists">
+                <v-container>
                     <h1>Add Winery</h1>
                     <v-form id="form" @submit.prevent ='updateWinery' enctype ='multipart/form-data'>
                         <v-text-field label="Winery Name" name="wineryName" v-model = 'wineryname'></v-text-field>
