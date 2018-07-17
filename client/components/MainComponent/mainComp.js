@@ -1,7 +1,14 @@
 var app = new Vue({
 	el: '#app',
 	data: {
+		value: '',
 		items1: [
+			{ title: 'Filter' },
+			{ title: 'Filter' },
+			{ title: 'Filter' },
+			{ title: 'Filter' },
+			{ title: 'Filter' },
+			{ title: 'Filter' },
 			{ title: 'Filter' },
 			{ title: 'Filter' },
 			{ title: 'Filter' },
@@ -18,5 +25,6 @@ var app = new Vue({
 			'fab fa-snapchat',
 			'fab fa-instagram'
 		]
+
 	}
 })
