@@ -59,7 +59,16 @@ module.exports = {
             winery.logo = `/${id}/logo.jpg`
             winery.background = `/${id}/background.jpg`
 
-            console.log(req.body.wineryname)
+            console.log(req.body)
+            console.log("logging the winery", winery)
+            for (bodyKey in req.body) {
+                for (wineryKey in winery) {
+                    if (winery.hasOwnProperty(wineryKey)) {
+                        // console.log(`${wineryKey}: ${winery[wineryKey]}`)
+                    }
+                }
+                console.log(`${bodyKey}: ${req.body[bodyKey]}`)
+            }
             winery.wineryname = req.body.wineryname
             winery.status = req.body.status
             winery.videourl = req.body.videourl
