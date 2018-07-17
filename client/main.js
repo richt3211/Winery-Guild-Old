@@ -25,6 +25,7 @@ const app = new Vue({
         exists: false,
         search: 'SIGHTGLASS CELLARS',
         wineryId: '',
+        
     },
     created () {
         console.log("running get wineries function")
@@ -44,6 +45,12 @@ const app = new Vue({
             var upld2 = document.querySelector('#uploader2')
             upld2.click()
         },
+        //getting filter states
+        getState(state){
+            api.getFilter(state)
+                .then()
+        }
+
         addWinery () {
             const winery = {
                 wineryname: this.wineryname,
