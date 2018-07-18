@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 	<html lang="en">
 		<head>
-			<link href='../../lib/vuetify.min.css' rel="stylesheet">
-  			<link href="../../lib/css.css" rel="stylesheet">
-  			<link href="../../lib/style.css" rel="stylesheet">
+			<link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+			<link href="https://cdn.jsdelivr.net/npm/vuetify/dist/vuetify.min.css" rel="stylesheet">
   			<link rel="stylesheet" href="maincompcss.css">
   			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
   			<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
 			<meta charset="UTF-8">
+
 			<title>Home</title>
 		</head>
 
@@ -30,25 +30,28 @@
 											Winery Guild
 										</v-toolbar-title>
 										
-										<v-card open-on-hover offset-y>
-											<v-btn round slot="activator">Filter</v-btn>
-											<v-toolbar>
-												<v-toolbar-title v-for="item in items1">
-													<v-menu open-on-hover offset-y>
-														<v-btn slot="activator">{{ item.title }}</v-btn>
-														<v-toolbar>
-															<v-toolbar-title v-for="item in items1">
-																<v-btn>{{ item.title }}</v-btn>
-															</v-toolbar-title>
-														</v-toolbar>
-													</v-menu>
-												</v-toolbar-title>
-											</v-toolbar>
-										</v-card>
+											<v-menu :nudge-bottom="14" light :min-width="176" :max-height="300" :close-on-content-click="false" offset-y>
+												
+												<v-btn slot="activator">Filter</v-btn>
+												
+												<v-list class="menuFilter">
+													<v-list-tile v-for="item in filterState">
+														<v-container class="contFilter">
+															<v-list-tile-title>
+																<v-checkbox :value="item" :label="item"></v-checkbox>	
+															</v-list-tile-title>
+														</v-container>
+													</v-list-tile>
+												</v-list>
+												
+											</v-menu>
+										
+
 										<v-spacer></v-spacer>
 										
-										<v-btn round>Claim</v-btn>
-										<v-btn round>Upgrade</v-btn>
+										<v-btn>Claim</v-btn>
+										<v-btn>Upgrade</v-btn>
+
 									</v-toolbar>
 								</v-flex>
 							</v-layout>
@@ -57,10 +60,13 @@
 									<p class="display-1 font-weight-thin">Featured</p>
 								</v-flex>
 							</v-layout>
-							<v-layout row wrap justify-center>
-								<v-flex xs3>
-									<v-card dark color="secondary">
-										<v-card-text class="px-0"> Featured </v-card-text>
+							<v-layout row justify-center>
+								<v-flex xs2 v-for="item in featured">
+									<v-card :height="80">
+										<v-container fill-height align-center>
+											<v-card-media src="https://cdn.vuetifyjs.com/images/cards/foster.jpg" height="80px" contain></v-card-media>	
+											<v-card-text class="px-0">{{ item.wineryname }}</v-card-text>
+										</v-container>
 									</v-card>
 								</v-flex>
 							</v-layout>
@@ -69,10 +75,12 @@
 									<p class="display-1 font-weight-thin">Premium</p>
 								</v-flex>
 							</v-layout>
-							<v-layout row wrap justify-center>
-								<v-flex xs4>
-									<v-card dark color="secondary">
-										<v-card-text class="px-0"> Premium </v-card-text>
+							<v-layout row justify-center>
+								<v-flex v-for="item in premium" xs3>
+									<v-card :height="80">
+										<v-container fill-height align-center>
+											<v-card-text class="px-0">{{ item.wineryname }}</v-card-text>
+										</v-container>
 									</v-card>
 								</v-flex>
 							</v-layout>
@@ -81,10 +89,12 @@
 									<p class="display-1 font-weight-thin">Claimed</p>
 								</v-flex>
 							</v-layout>
-							<v-layout row wrap justify-center>
-								<v-flex xs4>
-									<v-card dark color="secondary">
-										<v-card-text class="px-0"> Claimed </v-card-text>
+							<v-layout row justify-center>
+								<v-flex xs2 v-for="item in claimed">
+									<v-card :height="80">
+										<v-container fill-height align-center>	
+											<v-card-text class="px-0">{{ item.wineryname }}</v-card-text>
+										</v-container>
 									</v-card>
 								</v-flex>
 							</v-layout>
@@ -93,10 +103,12 @@
 									<p class="display-1 font-weight-thin">Unclaimed</p>
 								</v-flex>
 							</v-layout>
-							<v-layout row wrap justify-center>
-								<v-flex xs3>
-									<v-card dark color="secondary">
-										<v-card-text class="px-0"> Unclaimed </v-card-text>
+							<v-layout row justify-center>
+								<v-flex xs2 v-for="item in unclaimed">
+									<v-card :height="80">
+										<v-container fill-height align-center>	
+											<v-card-text class="px-0">{{ item.wineryname }}</v-card-text>
+										</v-container>
 									</v-card>
 								</v-flex>
 							</v-layout>
@@ -127,10 +139,9 @@
 				</v-app>
 			</div>
 			
-			<script src="../../lib/vue.js"></script>
-			<script src="../../lib/vuetify.js"></script>
-			<script src="../../lib/vue-router.js"></script>
-			<script src="./mainComp.js"></script>
+			<script src="mainComp.js" type="module"></script>
+			<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	        <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
 
 		</body>
 

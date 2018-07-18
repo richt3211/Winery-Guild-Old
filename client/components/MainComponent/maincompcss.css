@@ -2,10 +2,26 @@
 	background-color: #22353e;
 }
 
+[v-cloak]{
+	display:none;
+}
+
 .v-divider{
 	margin-bottom: 1rem;
 }
 
+#menuMain{
+	max-width:176px;
+	max-height: 64px;
+	padding: 0;
+}
+
+.menuFilter{
+	padding:1rem;
+}
+.contFilter{
+	padding:1rem;
+}
 /*html::-webkit-scrollbar{
 	display:none;
 }*/

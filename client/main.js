@@ -25,9 +25,6 @@ const app = new Vue({
         exists: false,
         search: 'SIGHTGLASS CELLARS',
         wineryId: '',
-        logoLink: '',
-        backgroundLink: '',
-
         
     },
     created () {
@@ -35,7 +32,7 @@ const app = new Vue({
         api.getWineries()
             .then(wineries => {
                 this.wineries = wineries
-                console.log('adding wineries to vue instance')
+                console.log(wineries)
             })
             .catch( e => console.log(e))
     },
@@ -49,10 +46,13 @@ const app = new Vue({
             upld2.click()
         },
         //getting filter states
-        getState(state){
-            api.getFilter(state)
-                .then()
-        },
+        // getState(state){
+        //     api.getFilter(state)
+        //         .then()
+        // },
+
+        // getWineries
+
         addWinery () {
             const winery = {
                 wineryname: this.wineryname,
@@ -87,6 +87,7 @@ const app = new Vue({
         getWinery (name) {
             console.log("pulling in the winery")
             const indexOfWinery = this.wineries.findIndex(winery => winery.wineryname === name)
+            console.log(indexOfWinery)
             const winery = this.wineries[indexOfWinery]
             this.wineryname = winery.wineryname
             this.wineryowner = winery.wineryowner
@@ -104,29 +105,28 @@ const app = new Vue({
             this.phone = winery.phone
             this.email = winery.email
             this.description = winery.description
+            
             this.wineryId = winery._id
+
             this.exists = true
-            this.logoLink = winery.logo
-            this.backgroundLink = winery.background
         },
         updateWinery () {
-
             const winery = {
                 wineryname: this.wineryname,
-                // wineryowner: this.wineryowner,
-                // permitnumber: this.permitnumber,
-                // street: this.street,
-                // city: this.city,
-                // state: this.state,
-                // zipcode: Number(this.zipcode),
-                // county: this.county,
-                // lat: Number(this.lat),
-                // lng: Number(this.lng),
+                wineryowner: this.wineryowner,
+                permitnumber: this.permitnumber,
+                street: this.street,
+                city: this.city,
+                state: this.state,
+                zipcode: Number(this.zipcode),
+                county: this.county,
+                lat: Number(this.lat),
+                lng: Number(this.lng),
                 status: this.status,
                 videourl: this.videourl,
                 websiteurl: this.websiteurl,
-                bgImg: this.bgImg,
                 logo: this.logo,
+                bgImg: this.bgImg,
                 phone: this.phone,
                 email: this.email,
                 description: this.description,

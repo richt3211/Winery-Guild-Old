@@ -1,14 +1,16 @@
+import api from './api.js'
+
 var app = new Vue({
 	el: '#app',
 	data: {
-		items1: [
-			{ title: 'Filter' },
-			{ title: 'Filter' },
-			{ title: 'Filter' },
-			{ title: 'Filter' },
-			{ title: 'Filter' },
-			{ title: 'Filter' }
-		],
+		wineries: null,
+		featured: null,
+		premium: null,
+		claimed: null,
+		unclaimed: null,
+		filterState: [],
+		filterCounty: [],
+		filterCity: [],
 		icons: [
 			'fab fa-facebook',
 			'fab fa-twitter',
@@ -17,6 +19,61 @@ var app = new Vue({
 			'fab fa-youtube',
 			'fab fa-snapchat',
 			'fab fa-instagram'
-		]
+		],
+	},
+
+	methods: {
+		
+		//get wineries list
+		loadWineries: function(){ 
+			api.getWineries()
+				.then(wineries => this.wineries = wineries).then(() => this.sortWineries).then(() => this.loadFilters)
+		},
+
+		
+		
+		
+
+	},
+
+
+
+	computed:{
+
+		//filter into status groups
+		sortWineries: function(){
+			const premiums = this.wineries.filter(winery => winery.status == 'Premium')
+			this.premium = premiums
+			const featureds = this.wineries.filter(winery => winery.status == 'Featured')
+			this.featured = featureds
+			const claimeds = this.wineries.filter(winery => winery.status == 'Claimed')
+			this.claimed = claimeds
+			const unclaimeds = this.wineries.filter(winery => winery.status == 'Unclaimed')
+			this.unclaimed = unclaimeds
+			console.log(premiums)
+			console.log(featureds)
+			console.log(claimeds)
+			console.log(unclaimeds)
+			},
+
+		
+		//get state/county/city filters
+		loadFilters: function(){
+			
+		}
+
+
+			
+
+	},
+
+	beforeMount(){
+		this.loadWineries()
 	}
+
 })
+	
+
+
+
+export default app
