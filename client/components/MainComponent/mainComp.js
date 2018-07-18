@@ -8,9 +8,10 @@ var app = new Vue({
 		premium: null,
 		claimed: null,
 		unclaimed: null,
-		filterState: [],
-		filterCounty: [],
-		filterCity: [],
+		userFilters: [],
+		filtersState: [],
+		filtersCounty: [],
+		filtersCity: [],
 		icons: [
 			'fab fa-facebook',
 			'fab fa-twitter',
@@ -49,7 +50,8 @@ var app = new Vue({
 			const claimeds = this.wineries.filter(winery => winery.status == 'Claimed')
 			this.claimed = claimeds
 			const unclaimeds = this.wineries.filter(winery => winery.status == 'Unclaimed')
-			this.unclaimed = unclaimeds
+			if (unclaimeds.length)
+				this.unclaimed = unclaimeds
 			console.log(premiums)
 			console.log(featureds)
 			console.log(claimeds)

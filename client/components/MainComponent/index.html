@@ -15,7 +15,7 @@
 			<div id="app">
 				<v-app v-cloak>
 					<v-content>
-						<v-container fluid grid-list-md text-xs-center>
+						<v-container fluid grid-list-md text-xs-center id="mainContainer">
 							<v-layout row wrap justify-center>
 								<v-flex xs12>
 									<v-toolbar style="background-color: #cc3230">
@@ -57,7 +57,7 @@
 							</v-layout>
 							<v-layout row justify-center>
 								<v-flex xs12>
-									<p class="display-1 font-weight-thin">Featured</p>
+									<p class="display-1 font-weight-thin" v-if="featured != null">Featured</p>
 								</v-flex>
 							</v-layout>
 							<v-layout row justify-center>
@@ -72,7 +72,7 @@
 							</v-layout>
 							<v-layout row justify-center>
 								<v-flex xs12>
-									<p class="display-1 font-weight-thin">Premium</p>
+									<p class="display-1 font-weight-thin" v-if="premium != null">Premium</p>
 								</v-flex>
 							</v-layout>
 							<v-layout row justify-center>
@@ -86,7 +86,7 @@
 							</v-layout>
 							<v-layout row justify-center>
 								<v-flex xs12>
-									<p class="display-1 font-weight-thin">Claimed</p>
+									<p class="display-1 text-xs-center font-weight-thin" v-if="claimed != null">Claimed</p>
 								</v-flex>
 							</v-layout>
 							<v-layout row justify-center>
@@ -100,7 +100,7 @@
 							</v-layout>
 							<v-layout row justify-center>
 								<v-flex xs12>
-									<p class="display-1 font-weight-thin">Unclaimed</p>
+									<p class="display-1 font-weight-thin" v-if="unclaimed != null">Unclaimed</p>
 								</v-flex>
 							</v-layout>
 							<v-layout row justify-center>
@@ -112,7 +112,7 @@
 									</v-card>
 								</v-flex>
 							</v-layout>
-							<v-container fluid>
+							<v-container fluid id="footerCont">
 								<v-layout align-end fill-height row justify-center>
 									<v-flex xs12>
 										<v-footer dark height="auto">
@@ -141,6 +141,7 @@
 			
 			<script src="mainComp.js" type="module"></script>
 			<script src="https://unpkg.com/vue/dist/vue.js"></script>
+			<!-- <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
 	        <script src="https://unpkg.com/vuetify/dist/vuetify.js"></script>
 
 		</body>

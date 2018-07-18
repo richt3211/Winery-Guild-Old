@@ -22,6 +22,14 @@
 .contFilter{
 	padding:1rem;
 }
+
+#mainContainer{
+	padding: 16px;
+}
+
+#footerCont{
+	padding: 0;
+}
 /*html::-webkit-scrollbar{
 	display:none;
 }*/
