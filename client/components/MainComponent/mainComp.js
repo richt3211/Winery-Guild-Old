@@ -12,6 +12,7 @@ var app = new Vue({
 		filtersState: [],
 		filtersCounty: [],
 		filtersCity: [],
+
 		icons: [
 			'fab fa-facebook',
 			'fab fa-twitter',
@@ -50,8 +51,12 @@ var app = new Vue({
 			const claimeds = this.wineries.filter(winery => winery.status == 'Claimed')
 			this.claimed = claimeds
 			const unclaimeds = this.wineries.filter(winery => winery.status == 'Unclaimed')
+<<<<<<< HEAD
 			if (unclaimeds.length)
 				this.unclaimed = unclaimeds
+=======
+			this.unclaimed = unclaimeds
+>>>>>>> richardUserView
 			console.log(premiums)
 			console.log(featureds)
 			console.log(claimeds)
