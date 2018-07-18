@@ -16,11 +16,23 @@ const addWinery = winery =>
     .then(res => res.send())
 const updateWinery = winery => {
     const form = new FormData()
-    form.append('bgImg', winery.bgImg)
-    form.append('logo', winery.logo)
-    console.log(form)
-    console.log(winery.bgImg)
-    console.log(winery.logo)
+    for (var key in winery) {
+        if (winery.hasOwnProperty(key)) {
+            if (winery[key]){
+                form.append(`${key}`, winery[key])
+            }
+            
+        }
+    }
+    // form.append('logo', winery.images[1])
+    // form.append('bgImg', winery.images[0])
+    // form.append('wineryname', winery.wineryname)
+    // form.append('status', winery.status)
+    // form.append('videourl', winery.videourl)
+    // form.append('websiteurl', winery.websiteurl)
+    // form.append('description', winery.description)
+    // form.append('phone', winery.description)
+    // form.append('email', winery.email)
     return fetch(`/wineries/${winery._id}`, {
         method: 'PUT',
         body: form

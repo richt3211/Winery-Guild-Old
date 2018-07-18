@@ -22,13 +22,18 @@ const storage = multer.diskStorage({
         }
     }
 })
-const upload = multer({storage: storage})
-const wineryController = require('../controllers/wineries')
 
-router.get('/', wineryController.listWineries) //calling the right controller function for the get request
-router.post('/', wineryController.addWinery) //calling the right controlelr function for the post request
-router.put('/:id', upload.any(), wineryController.editWinery)
-// router.post('/img', wineryController.addImg)
+const upload = multer({storage: storage})
+const userController = require('../controllers/user')
+const adminController = require('../controllers/admin')
+
+//userView
+router.get('/', userController.getWineries) 
+router.put('/', userController.editAllWineries)
+
+//adminView
+router.post('/', adminController.addWinery) 
+router.put('/:id', upload.any(), adminController.editWinery)
 
 
 module.exports = router
