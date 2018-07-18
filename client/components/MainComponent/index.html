@@ -49,7 +49,7 @@
 
 										<v-spacer></v-spacer>
 										
-										<v-btn @click="loadWineries">Claim</v-btn>
+										<v-btn>Claim</v-btn>
 										<v-btn>Upgrade</v-btn>
 
 									</v-toolbar>
@@ -61,9 +61,12 @@
 								</v-flex>
 							</v-layout>
 							<v-layout row justify-center>
-								<v-flex xs3 v-for="item in featured">
-									<v-card dark color="secondary">
-										<v-card-text class="px-0"> {{ item.wineryname }} </v-card-text>
+								<v-flex xs2 v-for="item in featured">
+									<v-card :height="80">
+										<v-container fill-height align-center>
+											<v-card-media src="https://cdn.vuetifyjs.com/images/cards/foster.jpg" height="80px" contain></v-card-media>	
+											<v-card-text class="px-0">{{ item.wineryname }}</v-card-text>
+										</v-container>
 									</v-card>
 								</v-flex>
 							</v-layout>
@@ -73,9 +76,11 @@
 								</v-flex>
 							</v-layout>
 							<v-layout row justify-center>
-								<v-flex v-for="item in premium" xs4>
-									<v-card dark color="secondary">
-										<v-card-text class="px-0"> {{ item.wineryname }} </v-card-text>
+								<v-flex v-for="item in premium" xs3>
+									<v-card :height="80">
+										<v-container fill-height align-center>
+											<v-card-text class="px-0">{{ item.wineryname }}</v-card-text>
+										</v-container>
 									</v-card>
 								</v-flex>
 							</v-layout>
@@ -85,9 +90,11 @@
 								</v-flex>
 							</v-layout>
 							<v-layout row justify-center>
-								<v-flex xs4 v-for="item in claimed">
-									<v-card dark color="secondary">
-										<v-card-text class="px-0"> {{ item.wineryname }} </v-card-text>
+								<v-flex xs2 v-for="item in claimed">
+									<v-card :height="80">
+										<v-container fill-height align-center>	
+											<v-card-text class="px-0">{{ item.wineryname }}</v-card-text>
+										</v-container>
 									</v-card>
 								</v-flex>
 							</v-layout>
@@ -97,9 +104,11 @@
 								</v-flex>
 							</v-layout>
 							<v-layout row justify-center>
-								<v-flex xs3 v-for="item in unclaimed">
-									<v-card dark color="secondary">
-										<v-card-text class="px-0"> {{ item.wineryname }} </v-card-text>
+								<v-flex xs2 v-for="item in unclaimed">
+									<v-card :height="80">
+										<v-container fill-height align-center>	
+											<v-card-text class="px-0">{{ item.wineryname }}</v-card-text>
+										</v-container>
 									</v-card>
 								</v-flex>
 							</v-layout>

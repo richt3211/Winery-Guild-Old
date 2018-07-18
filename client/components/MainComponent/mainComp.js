@@ -24,18 +24,24 @@ var app = new Vue({
 
 	methods: {
 		
+		//get wineries list
 		loadWineries: function(){ 
 			api.getWineries()
-				.then(wineries => this.wineries = wineries).then(() => this.sortWineries)
-
-			},
-
+				.then(wineries => this.wineries = wineries).then(() => this.sortWineries).then(() => this.loadFilters)
 		},
+
+		
+		
+		
+
+	},
+
+
 
 	computed:{
 
+		//filter into status groups
 		sortWineries: function(){
-
 			const premiums = this.wineries.filter(winery => winery.status == 'Premium')
 			this.premium = premiums
 			const featureds = this.wineries.filter(winery => winery.status == 'Featured')
@@ -44,14 +50,28 @@ var app = new Vue({
 			this.claimed = claimeds
 			const unclaimeds = this.wineries.filter(winery => winery.status == 'Unclaimed')
 			this.unclaimed = unclaimeds
-
+			console.log(premiums)
+			console.log(featureds)
+			console.log(claimeds)
+			console.log(unclaimeds)
 			},
+
+		
+		//get state/county/city filters
+		loadFilters: function(){
+			
+		}
+
 
 			
 
-		},
+	},
 
-	})
+	beforeMount(){
+		this.loadWineries()
+	}
+
+})
 	
 
 
