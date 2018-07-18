@@ -2,6 +2,10 @@
 	background-color: #22353e;
 }
 
+[v-cloak]{
+	display:none;
+}
+
 .v-divider{
 	margin-bottom: 1rem;
 }

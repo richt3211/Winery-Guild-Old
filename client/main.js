@@ -32,7 +32,7 @@ const app = new Vue({
         api.getWineries()
             .then(wineries => {
                 this.wineries = wineries
-                console.log('adding wineries to vue instance')
+                console.log(wineries)
             })
             .catch( e => console.log(e))
     },
@@ -46,10 +46,12 @@ const app = new Vue({
             upld2.click()
         },
         //getting filter states
-        getState(state){
-            api.getFilter(state)
-                .then()
-        }
+        // getState(state){
+        //     api.getFilter(state)
+        //         .then()
+        // },
+
+        // getWineries
 
         addWinery () {
             const winery = {

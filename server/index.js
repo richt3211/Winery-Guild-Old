@@ -7,7 +7,7 @@ const wineryRouter = require('./routes/wineries')
 
 
 app.use(bodyParser.json())
-app.use(express.static(`${__dirname}/../client`)) //rendering the static views
+app.use(express.static(`${__dirname}/../client/components/MainComponent/`)) //rendering the static views
 app.use(morgan('tiny')) //watching for changes
 
 app.use('/wineries', wineryRouter) //using the winery router for the home directory of the server
