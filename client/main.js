@@ -25,6 +25,9 @@ const app = new Vue({
         exists: false,
         search: 'SIGHTGLASS CELLARS',
         wineryId: '',
+        logoLink: '',
+        backgroundLink: '',
+
         
     },
     created () {
@@ -49,8 +52,7 @@ const app = new Vue({
         getState(state){
             api.getFilter(state)
                 .then()
-        }
-
+        },
         addWinery () {
             const winery = {
                 wineryname: this.wineryname,
@@ -85,7 +87,6 @@ const app = new Vue({
         getWinery (name) {
             console.log("pulling in the winery")
             const indexOfWinery = this.wineries.findIndex(winery => winery.wineryname === name)
-            console.log(indexOfWinery)
             const winery = this.wineries[indexOfWinery]
             this.wineryname = winery.wineryname
             this.wineryowner = winery.wineryowner
@@ -103,28 +104,29 @@ const app = new Vue({
             this.phone = winery.phone
             this.email = winery.email
             this.description = winery.description
-            
             this.wineryId = winery._id
-
             this.exists = true
+            this.logoLink = winery.logo
+            this.backgroundLink = winery.background
         },
         updateWinery () {
+
             const winery = {
                 wineryname: this.wineryname,
-                wineryowner: this.wineryowner,
-                permitnumber: this.permitnumber,
-                street: this.street,
-                city: this.city,
-                state: this.state,
-                zipcode: Number(this.zipcode),
-                county: this.county,
-                lat: Number(this.lat),
-                lng: Number(this.lng),
+                // wineryowner: this.wineryowner,
+                // permitnumber: this.permitnumber,
+                // street: this.street,
+                // city: this.city,
+                // state: this.state,
+                // zipcode: Number(this.zipcode),
+                // county: this.county,
+                // lat: Number(this.lat),
+                // lng: Number(this.lng),
                 status: this.status,
                 videourl: this.videourl,
                 websiteurl: this.websiteurl,
-                logo: this.logo,
                 bgImg: this.bgImg,
+                logo: this.logo,
                 phone: this.phone,
                 email: this.email,
                 description: this.description,
