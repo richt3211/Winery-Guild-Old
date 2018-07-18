@@ -1,9 +1,6 @@
 const Winery = require('../models/winery')
-const path = require('path')
-const fs = require('fs')
 
 module.exports = {
-    //This is the function the router calls to add a winery to the database
     addWinery: (req,res,next) => {
         Winery.create({
             permalink: req.body.permalink,
@@ -30,24 +27,6 @@ module.exports = {
             next()
         })
     },
-    //This is the function the router calls to list all of the wineries in the database
-    listWineries: (req, res, next) => {
-        Winery.find(req.query)
-        .then(wineries => {
-            return res.status(200).json(wineries)
-        })
-        .catch( e => {
-            req.error = e
-            next()
-        })
-
-    },
-    // addImg: (req, res, next) => {
-    //     var logo = req.body.logo
-    //     var bg = req.body.bgImg
-    //     console.log(logo)
-    //     console.log(bg)
-    // },
     editWinery: (req,res,next) => {
         Winery.findById(req.params.id, (err, winery) => {
             if (err) {
@@ -84,5 +63,6 @@ module.exports = {
                 next()
             })
 
-    }
+    },
+
 }
