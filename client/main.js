@@ -49,20 +49,10 @@ const app = new Vue({
             upld2.click()
         },
         //getting filter states
-<<<<<<< HEAD
-        // getState(state){
-        //     api.getFilter(state)
-        //         .then()
-        // },
-
-        // getWineries
-
-=======
         getState(state){
             api.getFilter(state)
                 .then()
         },
->>>>>>> 2fb4786abadc5b8602a95ff46e0505f83d2d7bfa
         addWinery () {
             const winery = {
                 wineryname: this.wineryname,
